@@ -2,6 +2,8 @@
 
 `make` to run
 
+![](pic.png)
+
 gone are the days of 
 ```bash
 cd /tmp
