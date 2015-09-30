@@ -21,16 +21,11 @@ class App : Gtk.Application {
         var args_field = builder.get_object ("entry1") as Gtk.Entry;
 
         (builder.get_object ("button1") as Gtk.Button).clicked.connect (b => {
-            Gtk.TextIter start, end;
-            valabuf.get_start_iter (out start);
-            valabuf.get_end_iter (out end);
-            string vala_code = valabuf.get_text (start, end, true);
-
             try {
                 FileIOStream iostream;
                 File tmp = File.new_tmp ("vala2c-XXXXXX.vala", out iostream);
                 var data_out = new DataOutputStream (iostream.output_stream);
-                data_out.put_string (vala_code);
+                data_out.put_string (valabuf.text);
 
                 string[] args = {"/usr/bin/valac", "-C", tmp.get_path ()};
                 foreach (var arg in args_field.text.split (" "))
