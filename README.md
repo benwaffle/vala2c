@@ -1,6 +1,6 @@
 # vala2c
 
-`make` to run
+`./Vala2C.vala` to run
 
 ![](pic.png)
 
