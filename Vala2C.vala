@@ -29,7 +29,7 @@ class App : Gtk.Application {
                 var data_out = new DataOutputStream (iostream.output_stream);
                 data_out.put_string (valabuf.text);
 
-                string[] args = {"/usr/bin/valac", "-C", tmp.get_path ()};
+                string[] args = {"valac", "-C", tmp.get_path ()};
                 foreach (var arg in args_field.text.split (" "))
                     args += arg;
 
