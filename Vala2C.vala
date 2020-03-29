@@ -1,4 +1,4 @@
-#!/usr/bin/vala --pkg=gtk+-3.0 --pkg=gio-2.0 --pkg gio-unix-2.0 --pkg gtksourceview-3.0
+#!/usr/bin/env vala --pkg=gtk+-3.0 --pkg=gio-2.0 --pkg gio-unix-2.0 --pkg gtksourceview-3.0
 
 // vim: set shiftwidth=4 tabstop=4 expandtab:
 class App : Gtk.Application {
@@ -34,7 +34,7 @@ class App : Gtk.Application {
                     args += arg;
 
                 var launcher = new SubprocessLauncher (SubprocessFlags.STDERR_PIPE);
-                launcher.set_cwd ("/tmp");
+                launcher.set_cwd (Environment.get_tmp_dir ());
                 var compiler = launcher.spawnv (args);
                 var mos = new MemoryOutputStream.resizable (); // errors
                 mos.splice_async.begin (compiler.get_stderr_pipe (),
